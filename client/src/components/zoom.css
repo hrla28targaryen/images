@@ -1,0 +1,7 @@
+.container {
+    text-align: center;
+    margin-left: 110px;
+    overflow: hidden;
+    max-height: 750px;
+    max-width: 480px;
+}

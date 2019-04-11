@@ -3,6 +3,7 @@ import axios from 'axios';
 import Zoom from './zoom.jsx';
 import Thumbnail from './thumbnail.jsx';
 import SkyLight from 'react-skylight';
+import style from './images.css'
 
 
 export default class Images extends Component {
@@ -90,8 +91,12 @@ export default class Images extends Component {
             <div>
                 <Thumbnail imagesViewPort={this.state.imagesViewPort} reviewThumb={this.state.reviewThumb} 
                 clickBoi={this.handleClick} downClick={this.downClick} upClick={this.upClick} count={this.state.count} modal={this.modal}/>
-                <SkyLight hideOnOverlayClicked ref={ref => this.simpleDialog = ref}>
-                <img src={this.state.reviewImages[1]}/>
+                <SkyLight  hideOnOverlayClicked ref={ref => this.simpleDialog = ref}>
+                    <div>
+                        <div>
+                        <img className={style.pic} src={this.state.reviewImages[1]}/>
+                        </div>
+                    </div>
                 </SkyLight>
                 <Zoom image={this.state.imageZoom} enter={this.enter} exit={this.exit} stalker={this.stalker}/>
             </div>

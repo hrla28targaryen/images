@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-import Zoom from './zoom.jsx'
-import Thumbnail from './thumbnail.jsx'
+import React, { Component } from 'react';
+import axios from 'axios';
+import Zoom from './zoom.jsx';
+import Thumbnail from './thumbnail.jsx';
+import SkyLight from 'react-skylight';
 
 
 export default class Images extends Component {
@@ -20,6 +21,7 @@ export default class Images extends Component {
         this.stalker = this.stalker.bind(this)
         this.downClick = this.downClick.bind(this)
         this.upClick = this.upClick.bind(this)
+        this.modal = this.modal.bind(this)
     }
 
     componentDidMount() {
@@ -43,7 +45,7 @@ export default class Images extends Component {
     }
 
     modal() {
-        
+        this.simpleDialog.show()
     }
 
     downClick(e) {
@@ -88,6 +90,9 @@ export default class Images extends Component {
             <div>
                 <Thumbnail imagesViewPort={this.state.imagesViewPort} reviewThumb={this.state.reviewThumb} 
                 clickBoi={this.handleClick} downClick={this.downClick} upClick={this.upClick} count={this.state.count} modal={this.modal}/>
+                <SkyLight hideOnOverlayClicked ref={ref => this.simpleDialog = ref}>
+                <img src={this.state.reviewImages[1]}/>
+                </SkyLight>
                 <Zoom image={this.state.imageZoom} enter={this.enter} exit={this.exit} stalker={this.stalker}/>
             </div>
         );

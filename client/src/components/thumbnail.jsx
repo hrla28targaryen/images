@@ -4,7 +4,7 @@ import style from "./thumbnail.css";
 
 const ThumbNail = (props) => (
     <div className={style.container} > 
-        <img src={props.reviewThumb} width="82" height="180.65" className={style.review}/>      
+        <img src={props.reviewThumb} onClick={() => props.modal()} width="82" height="180.65" className={style.review}/>      
             {props.count > 0 ?
             <div className={style.thumbPrev} onClick={() => props.upClick()}><span className={style.arrowPrev} ></span></div> : <div className={style.thumbPrev} > </div>}    
             <ThumbImages imagesViewPort={props.imagesViewPort} clickBoi={props.clickBoi} />
@@ -13,6 +13,3 @@ const ThumbNail = (props) => (
     </div>
 )
 export default ThumbNail;
-
-// onClick={() => props.downClick()}
-// onClick={() => props.upClick()}

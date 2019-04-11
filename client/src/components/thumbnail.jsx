@@ -1,23 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ThumbImages from './thumbImages.jsx';
 import style from "./thumbnail.css";
 
-export default class Thumbnail extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            // images: []
-        }
-    }
+const ThumbNail = (props) => (
+    <div className={style.container} > 
+        <img src={props.reviewThumb} width="82" height="180.65" className={style.review}/>      
+            {props.count > 0 ?
+            <div className={style.thumbPrev} onClick={() => props.upClick()}><span className={style.arrowPrev} ></span></div> : <div className={style.thumbPrev} > </div>}    
+            <ThumbImages imagesViewPort={props.imagesViewPort} clickBoi={props.clickBoi} />
+            {props.imagesViewPort.length > 3 && (props.imagesViewPort.length - props.count - 2) > props.count ?
+            <div onClick={() => props.downClick()} className={style.thumbNext}> <span className={style.arrowNext} ></span></div> : <div className={style.thumbNext} ></div>}
+    </div>
+)
+export default ThumbNail;
 
-    render () {
-        return (
-            <div className={style.container} > 
-                <img src="https://s3-us-west-1.amazonaws.com/hrla28fecimages/Dress+1/Noni+review.JPG" width="82" height="180.65" className={style.review}/>
-                <div className={style.thumbPrev}><span className={style.arrowPrev}></span></div>
-                <ThumbImages images={this.props.images} clickBoi={this.props.clickBoi}/>
-                <div className={style.thumbNext}><span className={style.arrowNext}></span></div>
-            </div>
-        );
-    }
-}
+// onClick={() => props.downClick()}
+// onClick={() => props.upClick()}

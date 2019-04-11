@@ -2,9 +2,8 @@ const db = require('../db/index.js')
 
 const controller = {
     get: (req, res) => {
-        // const dress = req.body.product_id
-        //{product_id: dress}
-        db.find()
+        let dress = req.params.id
+        db.find({product_id: dress})
         .then(data => res.status(200).send(data))
     }
 }

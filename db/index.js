@@ -1,11 +1,21 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost/products')
+mongoose.connect('mongodb://localhost/products', { useMongoClient: true })
 
 const dressSchema = mongoose.Schema({
     product_id: Number,
-    image: [String],
-    purchaseInfo: {
+    images: [String],
+    reviewImages:[String]
+})
+
+const Dresses = mongoose.model('Dresses', dressSchema);
+
+module.exports = Dresses
+
+
+
+/*
+purchaseInfo: {
         sizeWorn: String,
         rentFor: String,
         overAllFit: String
@@ -23,8 +33,4 @@ const dressSchema = mongoose.Schema({
         commentTitle: String,
         commentBody: String
     }
-})
-
-const Dresses = mongoose.model('Dresses', dressSchema);
-
-module.exports = Dresses
+*/

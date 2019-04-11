@@ -4,6 +4,7 @@
 
 .review {
     max-width: 82px;
+    cursor: pointer;
 }
 
 .thumbPrev {

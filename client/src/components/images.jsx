@@ -14,7 +14,8 @@ export default class Images extends Component {
             reviewThumb: '',
             imagesViewPort: [],
             reviewImages: [],
-            count: 0
+            count: 0,
+            rCount: 1
         }
         this.handleClick = this.handleClick.bind(this)
         this.enter = this.enter.bind(this)
@@ -47,6 +48,14 @@ export default class Images extends Component {
 
     modal() {
         this.simpleDialog.show()
+    }
+
+    leftClick() {
+
+    }
+
+    rightClick() {
+
     }
 
     downClick(e) {
@@ -94,7 +103,13 @@ export default class Images extends Component {
                 <SkyLight  hideOnOverlayClicked ref={ref => this.simpleDialog = ref}>
                     <div>
                         <div>
+                        {/* {rCount > 0 ? */}
+                         <div className={style.leftPrev}><span className={style.leftArrow} >
+                         </span></div>
                         <img className={style.pic} src={this.state.reviewImages[1]}/>
+                        {/* {props.imagesViewPort.length > 3 && (props.imagesViewPort.length - rCount - 2) > rCount ? */}
+                        <div className={style.rightNext}> <span className={style.rightArrow} >
+                        </span></div> 
                         </div>
                     </div>
                 </SkyLight>

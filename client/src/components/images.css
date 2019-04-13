@@ -1,4 +1,3 @@
-
 .pic {
     max-height: 800px; 
     max-width: 1200px;
@@ -18,4 +17,44 @@
     transition-timing-function: ease;
     transition-duration: 200ms;
     display: block;
+}
+
+.leftPrev {
+    left: -100%;
+}
+
+.leftArrow {
+    width: 48px;
+    height: 48px;
+    border-top: 1px solid #FFFFFF;
+    border-right: 1px solid #FFFFFF;
+    border-left: 0;
+    border-bottom: 0;
+    opacity: 1;
+    -webkit-transform: rotate(225deg);
+    -moz-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    -o-transform: rotate(225deg);
+    transform: rotate(225deg);
+    display: block
+}
+
+.rightNext {
+    right: -100%;
+}
+
+.rightArrow {
+    width: 48px;
+    height: 48px;
+    border-top: 1px solid #FFFFFF;
+    border-right: 1px solid #FFFFFF;
+    border-left: 0;
+    border-bottom: 0;
+    opacity: 1;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    display: block
 }

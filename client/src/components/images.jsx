@@ -92,7 +92,7 @@ export default class Images extends Component {
 
     stalker(e) {
         let image = document.getElementById(e.target.id)
-        image.style.transformOrigin = `${e.pageX}px ${e.pageY}px`
+        image.style.transformOrigin = `${e.pageX - 110}px ${e.pageY}px`
     }
 
     render () {

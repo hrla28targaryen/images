@@ -3,6 +3,7 @@ import axios from 'axios';
 import Zoom from './zoom.jsx';
 import Thumbnail from './thumbnail.jsx';
 import SkyLight from 'react-skylight';
+
 import style from './images.css'
 
 
@@ -15,6 +16,7 @@ export default class Images extends Component {
             imagesViewPort: [],
             reviewImages: [],
             count: 0,
+            clickModal: false,
             rCount: 1
         }
         this.handleClick = this.handleClick.bind(this)
@@ -48,14 +50,27 @@ export default class Images extends Component {
 
     modal() {
         this.simpleDialog.show()
+        // this.setState({
+        //     clickModal: true
+        // })
     }
 
-    leftClick() {
+    // exitModal() {
+    //     this.setState({
+    //         clickModal: false
+    //     })
+    // }
 
+    leftClick() {
+        this.setState({
+            rCount: this.state.rCount - 1
+        })
     }
 
     rightClick() {
-
+        this.setState({
+            rCount: this.state.rCount + 1
+        })
     }
 
     downClick(e) {
@@ -100,22 +115,32 @@ export default class Images extends Component {
             <div>
                 <Thumbnail imagesViewPort={this.state.imagesViewPort} reviewThumb={this.state.reviewThumb} 
                 clickBoi={this.handleClick} downClick={this.downClick} upClick={this.upClick} count={this.state.count} modal={this.modal}/>
-                <SkyLight  hideOnOverlayClicked ref={ref => this.simpleDialog = ref}>
-                    <div>
-                        <div>
-                        {/* {rCount > 0 ? */}
-                         <div className={style.leftPrev}><span className={style.leftArrow} >
-                         </span></div>
-                        <img className={style.pic} src={this.state.reviewImages[1]}/>
-                        {/* {props.imagesViewPort.length > 3 && (props.imagesViewPort.length - rCount - 2) > rCount ? */}
-                        <div className={style.rightNext}> <span className={style.rightArrow} >
-                        </span></div> 
-                        </div>
+                <Zoom image={this.state.imageZoom} enter={this.enter} exit={this.exit} stalker={this.stalker}/>         
+                <SkyLight className={style.dontHateMeTracy} hideOnOverlayClicked ref={ref => this.simpleDialog = ref}>
+                        <div className={style.modalBox}>
+                        {this.state.rCount > 1 &&
+                         <div className={style.leftPrev} onClick={() => this.leftClick()}><span className={style.leftArrow} >
+                         </span></div>}
+                        <img className={style.pic} src={this.state.reviewImages[this.state.rCount]}/>
+                        {((this.state.reviewImages.length - 1) > this.state.rCount) &&
+                        <div className={style.rightNext} onClick={()=> this.rightClick()}><span className={style.rightArrow} >
+                        </span></div>} 
+
                     </div>
                 </SkyLight>
-                <Zoom image={this.state.imageZoom} enter={this.enter} exit={this.exit} stalker={this.stalker}/>
             </div>
         );
     }
 
 }
+
+
+// {this.state.clickModal && 
+//     <div onClick={() => this.exitModal()} className={style.modalBackground}>
+//     <div className={style.leftPrev}><span className={style.leftArrow}></span></div>
+//     <div className={style.popUp}>
+    
+//     </div>
+//     <div className={style.rightNext}><span className={style.rightArrow}></span></div>
+//     </div>}
+
